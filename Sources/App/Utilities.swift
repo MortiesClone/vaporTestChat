@@ -17,7 +17,12 @@ class Utilities {
         var randomString = ""
         
         for _ in 0 ..< length {
-            let rand = arc4random_uniform(len)
+            #if os(Linux)
+                srandom(UInt32(time(nil)))
+                let rand = UInt32(random())%len
+            #else
+                let rand = arc4random_uniform(len)
+            #endif
             var nextChar = letters.character(at: Int(rand))
             randomString += NSString(characters: &nextChar, length: 1) as String
         }
