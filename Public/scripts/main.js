@@ -35,7 +35,7 @@ btn_start.onclick = function() {
     btn_start.style.display = 'none';
     searching_text.style.display = 'block';
 
-    ws = new WebSocket("ws://0.0.0.0:8080/ws");
+    ws = new WebSocket("wss://ragdoo.herokuapp.com/ws");
     
     ws.onmessage = function(event) {
         var msg = JSON.parse(event.data);
