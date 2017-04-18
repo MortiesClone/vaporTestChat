@@ -11,21 +11,30 @@ import Foundation
 class Utilities {
     public static func randomString(length: Int) -> String {
         
-        let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-        let len = UInt32(letters.length)
+        let letters : String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        let len = letters.characters.count
         
         var randomString = ""
         
-        for _ in 0 ..< length {
-            #if os(Linux)
-                srandom(UInt32(time(nil)))
-                let rand = UInt32(random())%len
-            #else
-                let rand = arc4random_uniform(len)
-            #endif
-            var nextChar = letters.character(at: Int(rand))
-            randomString += NSString(characters: &nextChar, length: 1) as String
-        }
+        #if os(Linux)
+            
+            srand(UInt32(time(nil)))
+            
+            for _ in 0..<length
+            {
+                let randomValue = (random() % len) + 1
+                
+                randomString += String(letters[letters.index(letters.startIndex, offsetBy: Int(randomValue))])
+            }
+            
+        #else
+            for _ in 0 ..< length
+            {
+                let rand = arc4random_uniform(UInt32(len))
+                
+                randomString += "\(letters[letters.index(letters.startIndex, offsetBy: Int(rand))])"
+            }
+        #endif
         
         return randomString
     }
