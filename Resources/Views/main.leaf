@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Internat</title>
+        <link rel="stylesheet" href="styles/style.css">
+        <link rel="stylesheet" href="styles/css-components.css">
+    </head>
+    <body>
+        <div class="btn_start" id="btn_start">START</div>
+        <p class="searching" id="searching_text">Searching<span>.</span><span>.</span><span>.</span></p>
+        <div class="chat" id="chat">
+            <div class="header">
+                <div class="app_name">Chat</div>
+                <a href="/" class="btn_exit">Exit</a>
+            </div>
+            <ul class="messages" id="messages">
+                <li class="message" id="message_template" style="display: none;">
+                    <div class="icon"></div>
+                    <div class="text_wrapper">
+                        <p>texte</p>
+                    </div>
+                </li>
+            </ul>
+            <div class="footer">
+                <div class="message_input_wrapper">
+                    <input class="message_input disabled" placeholder="Enter a message" id="input_message">
+                </div>
+                <div class="btn_submit disabled" id="btn_submit">
+                    <p>Submit</p>
+                </div>
+            </div>
+        </div>
+        <script src="scripts/main.js"></script>
+    </body>
+</html>

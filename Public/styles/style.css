@@ -1,0 +1,174 @@
+.btn_start {
+    position: absolute;
+    z-index: 1;
+    color: white;
+    background-color: orange;
+    padding: 20px 40px;
+    border-radius: 10px;
+    margin: 20% 45%;
+    border: 1px solid orange;
+}
+
+.btn_start:hover {
+    background-color: rgba(0, 0, 0, 0);
+    color: orange;
+    cursor: pointer;
+}
+
+.disabled { pointer-events: none; }
+
+.chat {
+    width: 90%;
+    background-color: #f8f8f8;
+    margin-left: 5%;
+    height: 95%;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    position: absolute;
+    border-top: 0.15px solid rgba(0, 0, 0, 0.15);
+    
+    filter: blur(5px);
+}
+
+.chat .header {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    background-color: white;
+    padding: 20px 0px;
+    font-size: 20px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.15);
+    color: #bcbdc0;
+}
+
+.app_name {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.btn_exit {
+    float: right;
+    text-decoration: none;
+    color: black;
+    margin-right: 20px;
+}
+
+.messages {
+    margin-top: 65px;
+    padding-left: 15px;
+    padding-right: 15px;
+    height: calc(100% - 170px);
+    overflow: scroll;
+    position: relative;
+}
+
+.message {
+    list-style: none;
+    overflow: hidden;
+}
+
+.icon {
+    width: 60px;
+    height: 60px;
+    background-color: orange;
+    border-radius: 50%;
+    display: inline-block;
+    margin-top: 15px;
+}
+
+img {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    border: 1px solid orange;
+    display: inline-block;
+    margin-top: 15px;
+}
+
+.text_wrapper {
+    display: inline-block;
+    background-color: white;
+    border-radius: 7px;
+    max-width: calc(100% - 150px);
+    margin: 15px;
+    min-height: 60px;
+}
+
+.text_wrapper p {
+    line-height: 1.5;
+    font-size: 18px;
+    margin-left: 15px;
+    margin-right: 15px;
+    word-wrap: break-word;
+}
+
+.text_wrapper.right p {
+    color: #45829b;
+}
+
+.text_wrapper.left p {
+    color: #c48843;
+}
+
+.right {
+    float: right;
+    background-color: #c7eafc;
+}
+
+.left {
+    float: left;
+    background-color: #ffe6cb;
+}
+
+.chat .footer {
+    width: 100%;
+    padding: 20px 0px;
+    background-color: white;
+    position: absolute;
+    bottom: 0px;
+}
+
+.message_input_wrapper {
+    height: 50px;
+    width: calc(100% - 200px);
+    display: inline-block;
+    border: 1px solid #bcbdc0;
+    border-radius: 10px;
+    padding: 5px 10px;
+    margin-left: 15px;
+}
+
+.message_input {
+    border: none;
+    height: 100%;
+    width: calc(100% - 20px);
+    outline-width: 0;
+    color: gray;
+    padding: 0px 10px;
+    font-size: 14px;
+}
+
+.btn_submit {
+    height: 60px;
+    width: 120px;
+    background-color: orange;
+    display: inline-block;
+    float: right;
+    border: 1px solid orange;
+    border-radius: 10px;
+    margin-right: 15px;
+    color: white;
+}
+
+.btn_submit:hover {
+    background-color: white;
+    cursor: pointer;
+    color: orange;
+}
+
+.btn_submit p {
+    text-align: center;
+    font-size: 18px;
+    color: inherit;
+}
