@@ -26,8 +26,8 @@
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
     overflow: hidden;
     position: absolute;
-    border-top: 0.15px solid rgba(0, 0, 0, 0.15);
-    
+    border: 0.15px solid rgba(0, 0, 0, 0.15);
+
     filter: blur(5px);
 }
 
@@ -97,7 +97,7 @@ img {
 
 .text_wrapper p {
     line-height: 1.5;
-    font-size: 18px;
+    font-size: 16px;
     margin-left: 15px;
     margin-right: 15px;
     word-wrap: break-word;
@@ -109,6 +109,41 @@ img {
 
 .text_wrapper.left p {
     color: #c48843;
+}
+
+.text_wrapper .btn_translate {
+    display: none;
+    font-size: 12px;
+    border: 0px solid;
+    border-radius: 20px;
+    padding: 3px 15px;
+    max-width: 58px;
+}
+
+.text_wrapper .langs {
+    display: none;
+    margin-right: 16px;
+    border: 0px;
+    color: #c48843;
+    outline-width: 0;
+    background: transparent;
+}
+
+.text_wrapper .btn_translate:hover {
+    border: 1px solid;
+    cursor: pointer;
+}
+
+.text_wrapper .translated {
+    display: none;
+}
+
+.text_wrapper .translated:after {
+    content: ")";
+}
+
+.text_wrapper .translated:before {
+    content: "(";
 }
 
 .right {

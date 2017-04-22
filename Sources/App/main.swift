@@ -1,7 +1,14 @@
 import Vapor
 import Foundation
+import HTTP
+
+HTTP.defaultServerTimeout = 120
 
 let drop = Droplet()
+let trans = Translate(
+    key: "trnsl.1.1.20170421T152957Z.5383632e767539ec.e615128effece6b983e8cfeb0bab3a91091ad1ef",
+    drop: drop
+)
 
 var lastClient: Client? = nil
 
@@ -9,7 +16,13 @@ var rooms: [String: Room] = [:]
 var users = 0
 
 drop.get { request in
-    return try drop.view.make("main.leaf")
+    let langs = try trans.getLangs()
+
+    guard let l = langs else {
+        fatalError("\(#file) : Cannot get langs")
+    }
+
+    return try drop.view.make("main.leaf", Node(node: ["langs" : l]))
 }
 
 drop.socket("ws") { (request, ws) in
@@ -43,11 +56,24 @@ drop.socket("ws") { (request, ws) in
     ws.onText = { ws,text  in
         let json = try JSON(bytes: Array(text.utf8))
         if let roomId = json.object?["roomId"]?.string,
-            let msg = json.object?["msg"]?.string {
+            let msg = json.object?["msg"]?.string,
+            let translate = json.object?["translate"]?.bool,
+            let lang = json.object?["lang"]?.string {
 
             if let room = rooms[roomId] {
-                try room.send(text: msg, sender: client)
+                var text = ""
+                if(translate) {
+                    text = try trans.translate(msg, toLang: lang)
+                }
+
+                try room.send(
+                    text: (translate) ? text : msg,
+                    sender: client,
+                    translate: translate
+                )
             }
+        } else {
+            print("Cannot unwrapp \(#file) at \(#line)")
         }
     }
 
@@ -67,7 +93,7 @@ drop.socket("ws") { (request, ws) in
     }
 }
 
-drop.get("/online") { req in
+drop.get("online") { req in
     return "online: \(users)"
 }
 
