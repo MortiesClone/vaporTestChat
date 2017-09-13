@@ -2,7 +2,7 @@ import Vapor
 import Foundation
 import HTTP
 
-HTTP.defaultServerTimeout = 120
+HTTP.defaultServerTimeout = 5
 
 let drop = Droplet()
 let trans = Translate(

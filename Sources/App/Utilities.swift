@@ -28,8 +28,8 @@ class Utilities {
         #else
             for _ in 0 ..< length
             {
-                let rand = arc4random_uniform(UInt32(len))
-                randomString.append(letters[randomValue])
+                let rand = Int(arc4random_uniform(UInt32(len)))
+                randomString.append(letters[rand])
             }
         #endif
         return randomString
